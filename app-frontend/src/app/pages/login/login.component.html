@@ -1,0 +1,29 @@
+<div class="login-container">
+  <form class="login-form">
+    <h2>Access your account</h2>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        [(ngModel)]="name"
+        (ngModelChange)="onChange()"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+        (ngModelChange)="onChange()"
+        required
+      />
+      <div *ngIf="loginError" class="error-text">{{ loginError }}</div>
+    </div>
+    <button type="submit" (click)="login()">Login</button>
+  </form>
+</div>

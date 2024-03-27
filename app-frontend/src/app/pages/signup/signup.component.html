@@ -1,0 +1,58 @@
+<div class="signup-container">
+  <div>
+    <div *ngIf="showSuccessMessage" class="success-message">
+      <div class="welcome-message">
+        <img src="assets/success.png" alt="Success Icon" />
+        <h1>Thank you</h1>
+        <h2>Your subimision has been sent</h2>
+      </div>
+    </div>
+    <form class="signup-form" *ngIf="!formSubmitted" (ngSubmit)="signup()">
+      <h2>Join us</h2>
+      <div class="form-group">
+        <label for="name">Username:</label>
+        <input
+          type="text"
+          id="username"
+          [(ngModel)]="name"
+          name="name"
+          (ngModelChange)="onNameChange()"
+          required
+        />
+        <div *ngIf="usernameExistsError" class="error-text">
+          {{ usernameExistsError }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          (ngModelChange)="onPasswordChange()"
+          required
+        />
+        <div *ngIf="passwordError" class="error-text">{{ passwordError }}</div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          (ngModelChange)="onEmailChange()"
+          required
+        />
+        <div *ngIf="emailExistError" class="error-text">
+          {{ emailExistError }}
+        </div>
+        <div *ngIf="emailError" class="error-text">
+          {{ emailError }}
+        </div>
+      </div>
+      <button type="submit">Signup</button>
+    </form>
+  </div>
+</div>

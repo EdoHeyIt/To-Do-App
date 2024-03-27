@@ -1,0 +1,342 @@
+$primary-color: #4caf50;
+$secondary-color: #fff;
+$tasks-color: #006400;
+$button-create: rgb(0, 52, 209);
+
+.user-container {
+  display: flex;
+  margin: 20px auto;
+  max-width: 1920px;
+
+  .create-percentage {
+    flex: 2;
+    flex-direction: column;
+    align-items: center;
+    min-height: 550px;
+    overflow: hidden;
+    padding: 20px;
+    color: $secondary-color;
+
+    .create-form {
+      min-height: 320px;
+      background-color: $primary-color;
+      margin: auto;
+      width: 90%;
+      padding: 20px;
+      border-radius: 8px;
+
+      form {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          margin-bottom: 12px;
+          font-weight: bold;
+        }
+
+        input,
+        textarea {
+          margin-bottom: 16px;
+          padding: 8px;
+          border: 1px solid $secondary-color;
+          border-radius: 4px;
+          font-size: 14px;
+          resize: none;
+          max-width: 100%;
+          outline: none;
+        }
+
+        button {
+          justify-content: center;
+          align-self: center;
+          margin-top: 20px;
+          padding: 8px;
+          background-color: $button-create;
+          color: $secondary-color;
+          border: none;
+          border-radius: 7px;
+          cursor: pointer;
+          font-size: 18px;
+          width: 28%;
+
+          &:hover {
+            background-color: darken($button-create, 8%);
+          }
+        }
+      }
+    }
+
+    .task-percentage {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      margin: 40px auto;
+
+      .progress-bar {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-clip: padding-box;
+        box-sizing: border-box;
+      }
+
+      .progress-text {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        line-height: 150px;
+        text-align: center;
+        font-size: 16px;
+        color: $secondary-color;
+      }
+    }
+  }
+
+  .tasks-form {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: $secondary-color;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    color: $tasks-color;
+    font-family: "Arial", sans-serif;
+    overflow: hidden;
+
+    .status-sort {
+      align-self: end;
+      border-bottom: 1px solid $tasks-color;
+      width: 220px;
+      text-align: center;
+
+      span {
+        color: $tasks-color;
+        font-size: 22px;
+        padding-right: 7px;
+        cursor: pointer;
+
+        &:hover {
+          font-weight: bolder;
+        }
+      }
+    }
+
+    .tasks {
+      margin-top: 10px;
+
+      ul {
+        padding-left: 0;
+      }
+
+      li {
+        border: 1px solid $tasks-color;
+        list-style: none;
+        margin: 10px auto;
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+        min-height: 90px;
+      }
+
+      .task-checkbox {
+        width: 8%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .checkbox {
+          width: 20px;
+          height: 20px;
+          color: $tasks-color;
+          margin: auto;
+        }
+      }
+
+      .task-text {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 80%;
+
+        input,
+        textarea {
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: none;
+          max-width: 100%;
+
+          &:focus {
+            outline: none;
+            border-color: blue;
+          }
+        }
+
+        .task-title {
+          font-weight: bolder;
+          font-size: 19px;
+          overflow-wrap: break-word;
+        }
+
+        .task-description {
+          color: black;
+          overflow-wrap: break-word;
+        }
+      }
+
+      .task-buttons {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        width: 8%;
+        margin-left: 4%;
+
+        img {
+          height: 30px;
+          width: 30px;
+          cursor: pointer;
+          margin: auto;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .user-container {
+    margin: 5px;
+
+    .create-percentage {
+      padding: 5px;
+
+      .create-form {
+        padding: 10px;
+      }
+    }
+
+    .tasks-form {
+      padding: 10px;
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .status-sort {
+        width: 230px;
+
+        span {
+          font-size: 20px;
+        }
+      }
+
+      .tasks {
+        margin-top: 8px;
+
+        li {
+          margin: 8px auto;
+          padding: 4px;
+        }
+
+        .task-checkbox {
+          .checkbox {
+            width: 18px;
+            height: 18px;
+          }
+        }
+
+        .task-text {
+          width: 78%;
+
+          .task-title {
+            font-size: 17px;
+          }
+
+          .task-description {
+            font-weight: 16px;
+          }
+        }
+
+        .task-buttons {
+          padding-left: 0;
+
+          img {
+            height: 25px;
+            width: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .user-container {
+    flex-direction: column;
+    .create-percentage {
+      padding: 0px;
+      margin-top: 5%;
+
+      .create-form {
+        padding: 10px;
+        max-width: 500px;
+
+        form {
+          button {
+            width: 35%;
+          }
+        }
+      }
+    }
+
+    .tasks-form {
+      padding: 0px;
+      h1 {
+        text-align: center;
+      }
+
+      .status-sort {
+        align-self: center;
+        width: 190px;
+
+        span {
+          font-size: 18px;
+          padding: 3px;
+        }
+      }
+
+      .tasks {
+        li {
+          padding: 10px 2px;
+          min-height: 50px;
+        }
+
+        .task-text {
+          max-width: 70%;
+          margin: 0px 3%;
+          input,
+          textarea {
+            padding: 5px;
+          }
+
+          .task-title {
+            font-size: 17px;
+          }
+
+          .task-description {
+            font-size: 16px;
+          }
+        }
+
+        .task-buttons {
+          img {
+            height: 25px;
+            width: 25px;
+          }
+        }
+      }
+    }
+  }
+}

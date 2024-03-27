@@ -1,0 +1,24 @@
+<nav class="navbar">
+  <div class="logo">
+    <a routerLink="/" tabindex="0">Your Favorite Task Tracker Application</a>
+  </div>
+  <div class="nav-links">
+    <ng-container *ngIf="!isLoggedIn; else logoutTemplate">
+      <a
+        (click)="navigateToLogin()"
+        (keyup.arrowLeft)="navigateToLogin()"
+        tabindex="0"
+        >Login</a
+      >
+      <a
+        (click)="navigateToSignup()"
+        (keyup.arrowRight)="navigateToSignup()"
+        tabindex="0"
+        >Signup</a
+      >
+    </ng-container>
+    <ng-template #logoutTemplate>
+      <a (click)="logout()" (keyup.escape)="logout()" tabindex="0">Logout</a>
+    </ng-template>
+  </div>
+</nav>

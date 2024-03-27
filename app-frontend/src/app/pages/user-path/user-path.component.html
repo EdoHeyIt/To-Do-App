@@ -1,0 +1,116 @@
+<div class="user-container" *ngIf="isUserLoggedIn">
+  <div class="create-percentage">
+    <div class="create-form">
+      <h2>Create Task</h2>
+      <form (submit)="createUserTask()">
+        <label for="title">Title:</label>
+        <input
+          maxlength="50"
+          type="text"
+          id="title"
+          [(ngModel)]="taskTitle"
+          name="title"
+          required
+        />
+
+        <label for="description">Description:</label>
+        <textarea
+          maxlength="200"
+          id="description"
+          [(ngModel)]="taskDescription"
+          name="description"
+          required
+        ></textarea>
+        <button class="create-button" type="submit">Create</button>
+      </form>
+    </div>
+    <div class="task-percentage">
+      <div
+        class="progress-bar"
+        [style.background]="getProgressInfo().color"
+      ></div>
+      <div class="progress-text">{{ getProgressInfo().text }}</div>
+    </div>
+  </div>
+  <div class="tasks-form">
+    <h1>Task list</h1>
+    <div class="status-sort">
+      <span (click)="getTasks()" tabindex="0" (keydown.arrowup)="getTasks()"
+        >All</span
+      >
+      <span
+        (click)="activeTasks()"
+        tabindex="0"
+        (keydown.arrowleft)="activeTasks()"
+        >Active</span
+      >
+      <span
+        (click)="completedTasks()"
+        tabindex="0"
+        (keydown.arrowright)="completedTasks()"
+        >Completed</span
+      >
+    </div>
+    <div class="tasks">
+      <ul>
+        <li *ngFor="let task of userTasks">
+          <div class="task-checkbox">
+            <input
+              class="checkbox"
+              type="checkbox"
+              [checked]="task.status === 'COMPLETED'"
+              (change)="toggleTaskStatus(task._id)"
+            />
+          </div>
+          <div class="task-text">
+            <span class="task-title" *ngIf="!task.isUpdating">{{
+              task.title
+            }}</span>
+            <input
+              *ngIf="task.isUpdating"
+              type="text"
+              maxlength="50"
+              [(ngModel)]="task.updatedTitle"
+            />
+            <span class="task-description" *ngIf="!task.isUpdating">{{
+              task.description
+            }}</span>
+            <textarea
+              *ngIf="task.isUpdating"
+              maxlength="200"
+              [(ngModel)]="task.updatedDescription"
+            ></textarea>
+          </div>
+          <div class="task-buttons">
+            <img
+              src="assets/update.png"
+              alt="Update icon"
+              *ngIf="!task.isUpdating"
+              (click)="updateTask(task)"
+              (keydown.enter)="saveUpdatedTask(task)"
+              tabindex="0"
+            />
+            <div class="updating-form" *ngIf="task.isUpdating">
+              <img
+                src="assets/save.png"
+                alt="Save icon"
+                (click)="saveUpdatedTask(task)"
+                (keydown.enter)="saveUpdatedTask(task)"
+                tabindex="0"
+              />
+            </div>
+            <div>
+              <img
+                src="assets/delete.png"
+                alt="Delete icon"
+                (click)="deleteTask(task._id)"
+                (keydown.backspace)="deleteTask(task._id)"
+                tabindex="0"
+              />
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

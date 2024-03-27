@@ -1,0 +1,94 @@
+$primary-color: #37a1e8;
+$secondary-color: #fff;
+$form-border: 1px solid #ffffff;
+$button-color: #0127a6;
+$box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+  rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+  rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+}
+
+.login-container {
+  height: 70vh;
+  padding-top: 20vh;
+
+  .login-form {
+    background-color: #1d95e5;
+    max-width: 500px;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    border: $form-border;
+    box-shadow: $box-shadow;
+
+    h2 {
+      color: $secondary-color;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .form-group {
+      width: 70%;
+      margin-bottom: 20px;
+      position: relative;
+
+      label {
+        display: block;
+        color: $secondary-color;
+        font-size: large;
+        margin-bottom: 10px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: $form-border;
+        border-radius: 3px;
+        outline: none;
+
+        &:focus {
+          border-color: black;
+        }
+      }
+
+      .error-text {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        color: black;
+        font-weight: bold;
+        margin-top: 2px;
+      }
+    }
+
+    button {
+      margin-top: 25px;
+      width: 30%;
+      padding: 6px;
+      background-color: $button-color;
+      color: white;
+      font-size: large;
+      border: $form-border;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken($button-color, 8%);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .login-container {
+    padding-top: 5vh;
+  }
+}
